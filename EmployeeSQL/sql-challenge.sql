@@ -31,20 +31,21 @@ where e.first_name = 'Hercules' and e.last_name like 'B%';
 
 -- Analysis #6
 select d.dept_name, e.emp_no, e.last_name, e.first_name
-from departments as d where d.dept_name = 'Sales';
+from departments as d
 inner join dept_emp as p
 ON d.dept_no=p.dept_no
 inner join employees as e
-ON p.emp_no=e.emp.no;
+ON p.emp_no=e.emp_no
+where d.dept_name = 'Sales';
 
 -- Analysis #7
 select d.dept_name, e.emp_no, e.last_name, e.first_name
-from departments as d 
-where d.dept_name = 'Sales' or 'Development';
+from departments as d
 inner join dept_emp as p
 ON d.dept_no=p.dept_no
 inner join employees as e
-ON p.emp_no=e.emp.no;
+ON p.emp_no=e.emp_no
+where d.dept_name = 'Sales' or d.dept_name = 'Development';
 
 -- Analysis #8
 select
