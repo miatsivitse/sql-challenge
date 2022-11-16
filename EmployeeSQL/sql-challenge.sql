@@ -6,7 +6,7 @@ ON e.emp_no=s.emp_no;
 -- Analysis #2
 select e.first_name, e.last_name, e.hire_date
 from employees as e
-where hire_date between '1/1/1986' and '12/31/1986';
+where hire_date between '12/31/1985' and '1/1/1987';
 
 -- Analysis #3
 select e.emp_no, e.last_name, e.first_name, m.dept, d.dept_name
@@ -31,8 +31,7 @@ where e.first_name = 'Hercules' and e.last_name like 'B%';
 
 -- Analysis #6
 select d.dept_name, e.emp_no, e.last_name, e.first_name
-from departments as d 
-where d.dept_name = 'Sales';
+from departments as d where d.dept_name = 'Sales';
 inner join dept_emp as p
 ON d.dept_no=p.dept_no
 inner join employees as e
@@ -48,5 +47,9 @@ inner join employees as e
 ON p.emp_no=e.emp.no;
 
 -- Analysis #8
-select count(last_name)
-from employees;
+select
+	employees.last_name,
+	count(employees.last_name) as duplicate_names
+from employees
+group by employees.last_name
+order by employees.last_name
